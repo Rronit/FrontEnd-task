@@ -15,10 +15,13 @@ export const MONTHLY_AMOUNT = ({
   const [monthlyAmount, setMonthlyAmount] = useState<number>(0);
   useEffect(() => {
     if (months < 1) return;
-    const tempAmount = Math.floor(amount / months);
+    const amountNumber = amount.toString().replaceAll(',', '');
+
+    const tempAmount = Math.round((Number(amountNumber) / months) * 100) / 100;
     setMonthlyAmount(tempAmount);
   }, [months, amount]);
 
+  console.log(amount);
   return (
     <div
       style={{

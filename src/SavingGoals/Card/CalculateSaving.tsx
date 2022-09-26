@@ -4,7 +4,7 @@ import { MONTHLY_AMOUNT } from './MonthlyAmount';
 import { TOTAL_AMOUNT } from './TotalAmount';
 
 export const CALCULATE_SAVING = (): ReactElement => {
-  const [amount, setAmount] = useState<number>(0);
+  const [amount, setAmount] = useState<any>(0);
   const [goalDate, setGoalDate] = useState(new Date());
   const [finalDate, setFinalDate] = useState('');
   const [monthsLeft, setMonthsLeft] = useState<number>(0);
@@ -15,19 +15,17 @@ export const CALCULATE_SAVING = (): ReactElement => {
 
   const updateRenderDate = (randerDate: any) => {
     setFinalDate(randerDate);
-    console.log(randerDate);
   };
 
   useEffect(() => {
     if (!(amount && goalDate)) return;
-    console.log(amount, goalDate);
     const months =
       goalDate.getMonth() -
       new Date().getMonth() +
       12 * (goalDate.getFullYear() - new Date().getFullYear());
     setMonthsLeft(months);
-    console.log(monthsLeft);
   }, [amount, goalDate]);
+  console.log(amount, Number(amount));
 
   return (
     <>
@@ -44,7 +42,7 @@ export const CALCULATE_SAVING = (): ReactElement => {
         />
       </div>
       <MONTHLY_AMOUNT
-        months={monthsLeft || 0}
+        months={monthsLeft}
         amount={amount}
         finalDate={finalDate}
       />

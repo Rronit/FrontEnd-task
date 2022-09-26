@@ -14,18 +14,10 @@ export const DATE_PICKER = ({
   updateRenderDate,
 }: any): ReactElement => {
   const [startDate, setStartDate] = useState(new Date());
-  const [randerDate, setRanderDate] = useState('');
   const CUSTOM_INPUT = (props: any): ReactElement => {
     const { onChange, onClick, value } = props;
-    // const getValue = (): string => {
-    //   const tempDivElement = document.createElement('div');
-    //   console.log({ startDate });
-    //   // Set the HTML content with the given
-    //   tempDivElement.innerHTML = '<pre>dfdsfds \n\n 2001</pre>';
-    //   return tempDivElement.textContent || tempDivElement.innerText || 'dddd';
-    // };
+
     useEffect(() => {
-      console.log({ value });
       updateRenderDate(value);
     }, [value]);
 
@@ -37,7 +29,6 @@ export const DATE_PICKER = ({
     };
     const goPrevMonth = () => {
       const newDate = new Date(startDate.setMonth(startDate.getMonth() - 1));
-      console.log({ newDate });
 
       setStartDate(newDate);
       updateDate(newDate, value);
