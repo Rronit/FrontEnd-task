@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import DollarIcon from "../../assets/icons/DollarIcon.png";
+import "../Card.style.css";
 
 export const TOTAL_AMOUNT = (props: any): ReactElement => {
   const { amount, setAmount } = props;
@@ -31,18 +32,13 @@ export const TOTAL_AMOUNT = (props: any): ReactElement => {
         marginRight: 10
       }}
     >
-      <label
-        style={{ fontSize: 14, lineHeight: "150%", height: 21 }}
-        htmlFor="amount"
-      >
+      <label className="headerText" htmlFor="amount">
         Total Amount{" "}
       </label>
       <br />
       <div
+        className="rowAlignItems"
         style={{
-          display: "flex",
-          justifyContent: "space-around",
-          alignItems: "center",
           border: "1px solid #E9EEF2",
           borderRadius: 4
         }}
@@ -67,16 +63,7 @@ export const TOTAL_AMOUNT = (props: any): ReactElement => {
           id="amount"
           value={getAmount()}
           onChange={e => handleChange(e)}
-          style={{
-            width: "100%",
-            height: 56,
-            border: "1px solid #fff",
-            fontFamily: "Rubik",
-            fontWeight: 500,
-            fontSize: 24,
-            color: "#4D6475",
-            alignSelf: "stretch"
-          }}
+          className="amountInput headerCommon"
         />
       </div>
     </div>

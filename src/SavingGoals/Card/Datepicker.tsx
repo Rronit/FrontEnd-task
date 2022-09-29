@@ -1,4 +1,5 @@
 import React, { ReactElement, useEffect, useState } from "react";
+import "../Card.style.css";
 import PrevIcon from "../../assets/icons/PrevIcon.svg";
 import NextIcon from "../../assets/icons/NextIcon.svg";
 
@@ -29,6 +30,7 @@ export const DATE_PICKER = ({
       updateDate(newDate, value);
     };
     const goPrevMonth = () => {
+      if (startDate.getMonth() === new Date().getMonth()) return;
       const newDate = new Date(startDate.setMonth(startDate.getMonth() - 1));
 
       setStartDate(newDate);
@@ -41,18 +43,13 @@ export const DATE_PICKER = ({
           marginRight: isMobileView ? 10 : undefined
         }}
       >
-        <label
-          style={{ fontSize: 14, lineHeight: "150%", height: 21 }}
-          htmlFor="amount"
-        >
+        <label className="headerText" htmlFor="amount">
           Reach goal by{" "}
         </label>
         <br />
         <div
+          className="rowAlignItems"
           style={{
-            display: "flex",
-            justifyContent: "space-around",
-            alignItems: "center",
             border: "1px solid #E9EEF2",
             borderRadius: 4
           }}
@@ -72,9 +69,7 @@ export const DATE_PICKER = ({
               // width: '55%',
               height: 56,
               border: "1px solid #fff",
-              textAlign: "center",
-              // fontSize: 16,
-              fontFamily: "Work Sans"
+              textAlign: "center"
             }}
             onChange={onChange}
             value={value}

@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 import HomeIcon from "../../assets/icons/HomeIcon.svg";
 import { CALCULATE_SAVING } from "./CalculateSaving";
 import { CONFIRM_BUTTON } from "./ConfirmButton";
+import "../Card.style.css";
 
 export const SAVING_CARD = (): ReactElement => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -21,14 +22,9 @@ export const SAVING_CARD = (): ReactElement => {
   // const isMobileView = width < breakpoint;
   return (
     <div
+      className="card"
       style={{
-        height: "60%",
-        width: mobileView ? "100%" : "40%",
-        // border: '2px solid ',
-        background: " #FFFFFF",
-        boxShadow: "0px 16px 32px rgba(30, 42, 50, 0.08)",
-        borderRadius: 8,
-        padding: "2%"
+        width: mobileView ? "100%" : "40%"
       }}
     >
       <div
@@ -47,10 +43,8 @@ export const SAVING_CARD = (): ReactElement => {
 
         <div>
           <span
+            className="headerCommon"
             style={{
-              fontFamily: "Rubik",
-              fontWeight: 500,
-              fontSize: 24,
               lineHeight: "120%",
               color: "#1E2A32",
               fontStyle: "normal"
@@ -61,7 +55,6 @@ export const SAVING_CARD = (): ReactElement => {
           <br />
           <span
             style={{
-              fontFamily: "Work Sans",
               // fontWeight: 500,
               fontSize: 16,
               lineHeight: "150%",
