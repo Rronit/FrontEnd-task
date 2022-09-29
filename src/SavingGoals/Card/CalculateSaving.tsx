@@ -1,12 +1,16 @@
-import React, { ReactElement, useEffect, useState } from 'react';
-import { DATE_PICKER } from './Datepicker';
-import { MONTHLY_AMOUNT } from './MonthlyAmount';
-import { TOTAL_AMOUNT } from './TotalAmount';
+import React, { ReactElement, useEffect, useState } from "react";
+import { DATE_PICKER } from "./Datepicker";
+import { MONTHLY_AMOUNT } from "./MonthlyAmount";
+import { TOTAL_AMOUNT } from "./TotalAmount";
 
-export const CALCULATE_SAVING = (): ReactElement => {
+export const CALCULATE_SAVING = ({
+  mobileView
+}: {
+  mobileView: boolean;
+}): ReactElement => {
   const [amount, setAmount] = useState<any>(0);
   const [goalDate, setGoalDate] = useState(new Date());
-  const [finalDate, setFinalDate] = useState('');
+  const [finalDate, setFinalDate] = useState("");
   const [monthsLeft, setMonthsLeft] = useState<number>(0);
 
   const updateDate = (date: any) => {
@@ -31,14 +35,15 @@ export const CALCULATE_SAVING = (): ReactElement => {
     <>
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'space-evenly',
+          display: "flex",
+          justifyContent: "space-around"
         }}
       >
         <TOTAL_AMOUNT amount={amount} setAmount={setAmount} />
         <DATE_PICKER
           updateDate={updateDate}
           updateRenderDate={updateRenderDate}
+          isMobileView={mobileView}
         />
       </div>
       <MONTHLY_AMOUNT

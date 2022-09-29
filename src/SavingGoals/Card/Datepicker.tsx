@@ -1,10 +1,10 @@
-import React, { forwardRef, ReactElement, useEffect, useState } from 'react';
-import PrevIcon from '../../assets/icons/PrevIcon.svg';
-import NextIcon from '../../assets/icons/NextIcon.svg';
+import React, { ReactElement, useEffect, useState } from "react";
+import PrevIcon from "../../assets/icons/PrevIcon.svg";
+import NextIcon from "../../assets/icons/NextIcon.svg";
 
-import DatePicker from 'react-datepicker';
+import DatePicker from "react-datepicker";
 
-import 'react-datepicker/dist/react-datepicker.css';
+import "react-datepicker/dist/react-datepicker.css";
 
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
@@ -12,6 +12,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 export const DATE_PICKER = ({
   updateDate,
   updateRenderDate,
+  isMobileView
 }: any): ReactElement => {
   const [startDate, setStartDate] = useState(new Date());
   const CUSTOM_INPUT = (props: any): ReactElement => {
@@ -34,21 +35,26 @@ export const DATE_PICKER = ({
       updateDate(newDate, value);
     };
     return (
-      <div>
+      <div
+        style={{
+          maxWidth: isMobileView ? 200 : undefined,
+          marginRight: isMobileView ? 10 : undefined
+        }}
+      >
         <label
-          style={{ fontSize: 14, lineHeight: '150%', height: 21 }}
+          style={{ fontSize: 14, lineHeight: "150%", height: 21 }}
           htmlFor="amount"
         >
-          Reach goal by{' '}
+          Reach goal by{" "}
         </label>
         <br />
         <div
           style={{
-            display: 'flex',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-            border: '1px solid #E9EEF2',
-            borderRadius: 4,
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+            border: "1px solid #E9EEF2",
+            borderRadius: 4
           }}
         >
           <span onClick={() => goPrevMonth()} style={{}}>
@@ -56,8 +62,8 @@ export const DATE_PICKER = ({
               src={PrevIcon}
               alt="Prev Icon"
               style={{
-                width: '8px',
-                height: '14px',
+                width: "8px",
+                height: "14px"
               }}
             />
           </span>
@@ -65,10 +71,10 @@ export const DATE_PICKER = ({
             style={{
               // width: '55%',
               height: 56,
-              border: '1px solid #fff',
-              textAlign: 'center',
+              border: "1px solid #fff",
+              textAlign: "center",
               // fontSize: 16,
-              fontFamily: 'Work Sans',
+              fontFamily: "Work Sans"
             }}
             onChange={onChange}
             value={value}
@@ -79,8 +85,8 @@ export const DATE_PICKER = ({
               src={NextIcon}
               alt="Next Icon"
               style={{
-                width: '8px',
-                height: '14px',
+                width: "8px",
+                height: "14px"
               }}
             />
           </span>
@@ -92,7 +98,7 @@ export const DATE_PICKER = ({
     <div>
       <DatePicker
         selected={startDate}
-        onChange={(date) => {
+        onChange={date => {
           date && setStartDate(date);
           updateDate(date);
         }}
