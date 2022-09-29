@@ -31,6 +31,7 @@ export const MONTHLY_AMOUNT = ({
       }}
     >
       <div
+        className="rowAlignItems"
         style={{
           height: "50%"
         }}
