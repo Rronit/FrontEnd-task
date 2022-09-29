@@ -65,6 +65,7 @@ export const DATE_PICKER = ({
             />
           </span>
           <input
+            id="reachDate"
             style={{
               // width: '55%',
               height: 56,
